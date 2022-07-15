@@ -3,3 +3,9 @@ type RootNavigatorParamsList = {
   SignIn: undefined;
   Main: undefined;
 };
+
+type MainNavigationParamsList = {
+  Home: undefined;
+  Search: undefined;
+  Details: undefined;
+};

@@ -2,10 +2,12 @@ import React from 'react';
 import LottieView from 'lottie-react-native';
 import { ScreenProps } from '@app/@types/navigation';
 import { StyleSheet, Text, View } from 'react-native';
+import storage from '@app/utils/StorageMMKV';
 
 export default function Splash(
   props: ScreenProps<RootNavigatorParamsList, 'Splash'>,
 ) {
+  const token = storage.getString('token');
   return (
     <View style={styles.splash}>
       <LottieView
@@ -13,7 +15,9 @@ export default function Splash(
         autoPlay
         loop={false}
         style={styles.logo}
-        onAnimationFinish={() => props.navigation.navigate('SignIn')}
+        onAnimationFinish={() =>
+          props.navigation.navigate(token ? 'Main' : 'SignIn')
+        }
       />
       <LottieView
         source={require('@app/assets/animations/logo-title')}
