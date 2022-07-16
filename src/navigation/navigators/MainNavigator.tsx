@@ -3,6 +3,7 @@ import SearchScreen from '@app/screens/Search';
 import HomeNavegator from './HomeNavegation';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
+import Header from '@app/components/Header';
 
 const Tab = createBottomTabNavigator();
 
@@ -11,14 +12,13 @@ export default function MainNavigator() {
     <Tab.Navigator
       initialRouteName="HomeNavegator"
       screenOptions={{
-        tabBarStyle: {},
+        tabBarShowLabel: false,
+        header: () => <Header />,
       }}>
       <Tab.Screen
         name="HomeNavegator"
         component={HomeNavegator}
         options={{
-          headerShown: false,
-          title: '',
           tabBarIcon: ({ color, size }) => (
             <Image
               source={require('@app/assets/icons/home.png')}
@@ -31,8 +31,11 @@ export default function MainNavigator() {
         name="Search"
         component={SearchScreen}
         options={{
-          tabBarIcon: () => (
-            <Image source={require('@app/assets/icons/search.png')} />
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require('@app/assets/icons/search.png')}
+              style={{ width: size, height: size }}
+            />
           ),
         }}
       />
