@@ -1,14 +1,35 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import styles from './styles';
+import MoviesList from '@app/components/MoviesList';
 import { ScreenProps } from '@app/@types/navigation';
+import {
+  View,
+  SafeAreaView,
+  TextInput,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import useGetPopularMovies from '@app/hooks/useGetPopularMovies';
 
-interface HomeScreenProps
-  extends ScreenProps<MainNavigationParamsList, 'Home'> {}
-
-export default function Home(props: HomeScreenProps) {
+function Home() {
+  const { popularMovies, handleGetpPopularMovies } = useGetPopularMovies();
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <SafeAreaView
+      style={{
+        backgroundColor: '#F4EFF3',
+      }}>
+      <View style={styles.formSearch}>
+        <TextInput placeholder="Email" style={styles.inputSearch} />
+        <TouchableOpacity style={styles.buttonSearch}>
+          <Image
+            style={styles.iconButton}
+            source={require('@app/assets/icons/search-button.png')}
+          />
+        </TouchableOpacity>
+      </View>
+      <MoviesList movies={popularMovies} />
+    </SafeAreaView>
   );
 }
+
+export default Home;

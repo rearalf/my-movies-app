@@ -7,5 +7,5 @@ type RootNavigatorParamsList = {
 type MainNavigationParamsList = {
   Home: undefined;
   Search: undefined;
-  Details: undefined;
+  Details: { id: number };
 };
