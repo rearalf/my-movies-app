@@ -1,11 +1,9 @@
 import { API_URL } from './settings';
 import { API_AUTH } from '@env';
 
-async function getPopularMovies(
-  page: number = 1,
-): Promise<ListMoviesResult> {
+async function getSimilar(id: number): Promise<ListMoviesResult> {
   try {
-    const url = `${API_URL}movie/popular?api_key=${API_AUTH}&page=${page}`;
+    const url = `${API_URL}movie/${id}/similar?api_key=${API_AUTH}`;
     const response = await fetch(url);
     const result: ListMoviesResult = await response.json();
     return result;
@@ -14,4 +12,4 @@ async function getPopularMovies(
   }
 }
 
-export default getPopularMovies;
+export default getSimilar;

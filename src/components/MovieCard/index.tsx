@@ -5,29 +5,32 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 interface MovieCardProps {
   movie: MovieCardType;
+  horizontal: boolean;
 }
 
-const MovieCard = (props: MovieCardType) => {
+const MovieCard = (props: MovieCardProps) => {
   const navigation = useNavigation<NavigationProp<MainNavigationParamsList>>();
   const handleGoToMovie = () => {
     navigation.navigate('Details', {
-      id: props.id,
+      id: props.movie.id,
     });
   };
   return (
-    <TouchableWithoutFeedback onPress={handleGoToMovie}>
-      <View style={styles.card}>
+    <TouchableWithoutFeedback onPress={handleGoToMovie} key={props.movie.id}>
+      <View style={[styles.card, props.horizontal && styles.cardHorizontal]}>
         <View>
           <Image
             source={{
-              uri: `https://image.tmdb.org/t/p/w500/${props.poster_path}`,
+              uri: `https://image.tmdb.org/t/p/w500/${props.movie.poster_path}`,
             }}
-            style={styles.image}
+            style={[styles.image, props.horizontal && styles.imageHorizontal]}
           />
-          <Text style={styles.number}>{`${props.vote_average * 10} `}%</Text>
-          <Text style={styles.title}>{props.title}</Text>
-          <Text style={styles.overview}>{props.overview}</Text>
-          <Text style={styles.releaseDate}>{props.release_date}</Text>
+          <Text style={styles.number}>
+            {`${Math.round(props.movie.vote_average * 10)} `}%
+          </Text>
+          <Text style={styles.title}>{props.movie.title}</Text>
+          <Text style={styles.overview}>{props.movie.overview}</Text>
+          <Text style={styles.releaseDate}>{props.movie.release_date}</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>

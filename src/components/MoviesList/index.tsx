@@ -1,10 +1,10 @@
 import React from 'react';
-import MovieCardProps from '../MovieCard';
+import MovieCard from '../MovieCard';
 import { FlatList } from 'react-native';
 import scale from '@app/utils/Scale';
 
 interface MoviesListProps {
-  movies: PopularMoviesResult['results'];
+  movies: ListMoviesResult['results'];
 }
 
 export default function MoviesList(props: MoviesListProps) {
@@ -13,7 +13,7 @@ export default function MoviesList(props: MoviesListProps) {
       data={props.movies}
       showsVerticalScrollIndicator={false}
       keyExtractor={movie => String(movie.id)}
-      renderItem={({ item }) => <MovieCardProps {...item} />}
+      renderItem={({ item }) => <MovieCard movie={item} horizontal={false} />}
       style={{
         marginHorizontal: scale(28),
       }}

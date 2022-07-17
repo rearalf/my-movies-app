@@ -11,10 +11,17 @@ const styles = StyleSheet.create({
     paddingVertical: scale(16),
     backgroundColor: '#FFF',
   },
+  cardHorizontal: {
+    width: scale(320),
+    marginRight: scale(20)
+  },
   image: {
     width: '100%',
-    height: scale(400),
+    height: scale(450),
     borderRadius: scale(10),
+  },
+  imageHorizontal: {
+    width: scale(300),
   },
   number: {
     position: 'absolute',
@@ -33,13 +40,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: 10,
     marginBottom: scale(10),
+    paddingHorizontal: scale(14),
   },
   overview: {
     fontSize: scale(12),
+    paddingHorizontal: scale(14),
   },
   releaseDate: {
     position: 'absolute',
-    top: scale(350),
+    top: scale(400),
     left: scale(10),
     color: '#373242',
     fontSize: 14,

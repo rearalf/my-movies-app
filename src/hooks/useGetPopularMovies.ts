@@ -4,7 +4,7 @@ import { Alert } from 'react-native';
 
 function useGetPopularMovies() {
   const [popularMovies, setPopularMovies] = useState<
-    PopularMoviesResult['results']
+    ListMoviesResult['results']
   >([]);
   const handleGetpPopularMovies = async () => {
     try {
