@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles';
 import { View, Text, TouchableWithoutFeedback, Image } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import VoteAverage from '../VoteAverage';
 
 interface MovieCardProps {
   movie: MovieCardType;
@@ -25,12 +26,12 @@ const MovieCard = (props: MovieCardProps) => {
             }}
             style={[styles.image, props.horizontal && styles.imageHorizontal]}
           />
-          <Text style={styles.number}>
-            {`${Math.round(props.movie.vote_average * 10)} `}%
-          </Text>
-          <Text style={styles.title}>{props.movie.title}</Text>
+          <VoteAverage voteAverage={props.movie.vote_average} />
+          <View style={styles.contentTitle}>
+            <Text style={styles.title}>{props.movie.title}</Text>
+            <Text style={styles.releaseDate}>{props.movie.release_date}</Text>
+          </View>
           <Text style={styles.overview}>{props.movie.overview}</Text>
-          <Text style={styles.releaseDate}>{props.movie.release_date}</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>

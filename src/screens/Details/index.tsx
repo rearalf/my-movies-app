@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './styles';
 import { ScreenProps } from '@app/@types/navigation';
 import useGetDetails from '@app/hooks/useGetDetails';
-import MoviesList from '@app/components/MoviesList';
 import { View, Text, Image, ScrollView, SafeAreaView } from 'react-native';
 import MovieCard from '@app/components/MovieCard';
 import scale from '@app/utils/Scale';
+import VoteAverage from '@app/components/VoteAverage';
 
 interface DetailsScreenProps
   extends ScreenProps<MainNavigationParamsList, 'Details'> {}
@@ -21,9 +21,7 @@ export default function Details(props: DetailsScreenProps) {
           }}
           style={styles.image}
         />
-        <Text style={styles.number}>
-          {`${movie ? movie.vote_average * 10 : 0} `}%
-        </Text>
+        <VoteAverage voteAverage={movie ? movie.vote_average : 0} />
         <Text style={styles.title}>{movie?.title}</Text>
         <View style={styles.moreDetails}>
           <Text style={styles.releaseDate}>

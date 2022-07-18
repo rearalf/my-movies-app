@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   cardHorizontal: {
     width: scale(320),
-    marginRight: scale(20)
+    marginRight: scale(20),
   },
   image: {
     width: '100%',
@@ -23,39 +23,23 @@ const styles = StyleSheet.create({
   imageHorizontal: {
     width: scale(300),
   },
-  number: {
-    position: 'absolute',
-    right: scale(10),
-    top: scale(10),
-    color: '#373242',
-    fontSize: 14,
-    fontWeight: '600',
-    backgroundColor: '#F4EFF3',
-    padding: scale(10),
-    borderRadius: scale(4),
+  contentTitle: {
+    marginVertical: scale(18),
   },
   title: {
     color: '#373242',
-    fontSize: 20,
+    fontSize: scale(22),
     fontWeight: 'bold',
-    paddingTop: 10,
-    marginBottom: scale(10),
-    paddingHorizontal: scale(14),
-  },
-  overview: {
-    fontSize: scale(12),
-    paddingHorizontal: scale(14),
+    textAlign: 'center',
   },
   releaseDate: {
-    position: 'absolute',
-    top: scale(400),
-    left: scale(10),
-    color: '#373242',
-    fontSize: 14,
+    fontSize: scale(14),
     fontWeight: '600',
-    backgroundColor: '#F4EFF3',
-    padding: scale(10),
-    borderRadius: scale(4),
+    textAlign: 'center',
+  },
+  overview: {
+    fontSize: scale(14),
+    paddingHorizontal: scale(14),
   },
 });
 
