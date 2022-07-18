@@ -1,4 +1,4 @@
-import SignInService from '@app/service/SignIn';
+import SignInAPI from '@app/api/SignIn';
 import storage from '@app/utils/StorageMMKV';
 import { useState } from 'react';
 /* 
@@ -7,8 +7,8 @@ import { useState } from 'react';
 */
 function useSignIn(navigation: () => void) {
   const [form, setForm] = useState({
-    email: 'eve.holt@reqres.in',
-    password: 'cityslicka',
+    email: '',
+    password: '',
     emailError: false,
     passwordError: false,
     error: false,
@@ -30,6 +30,7 @@ function useSignIn(navigation: () => void) {
         throw 'Email is empty.';
       }
       if (form.password === '') {
+        console.log(form.password)
         setForm({
           ...form,
           emailError: false,
@@ -37,25 +38,29 @@ function useSignIn(navigation: () => void) {
         });
         throw 'Password is empty.';
       }
-      const result = await SignInService(form.email, form.password);
+      const result = await SignInAPI(form.email, form.password);
       if (result.error !== undefined) {
         setForm({
           ...form,
           emailError: false,
           passwordError: false,
           error: true,
+          email: '',
+          password: '',
         });
         throw 'An error occurred with the credentials';
       } else {
         setForm({
-          ...form,
+          email: '',
+          password: '',
           emailError: false,
           passwordError: false,
           error: false,
-          success: true,
+          success: false,
         });
         storage.set('token', result.token);
-        navigation();
+        const token = storage.getString('token');
+        if (token) navigation();
       }
     } catch (error) {
       console.log(error);

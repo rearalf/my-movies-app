@@ -1,14 +1,22 @@
-import React from 'react';
-import SearchScreen from '@app/screens/Search';
-import HomeNavegator from './HomeNavegation';
+import React, { useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
+import HomeNavegator from './HomeNavegation';
 import Header from '@app/components/Header';
 import SearchNavegator from './SearchNavegation';
+import storage from '@app/utils/StorageMMKV';
 
 const Tab = createBottomTabNavigator();
 
 export default function MainNavigator() {
+  const navigation = useNavigation<NavigationProp<RootNavigatorParamsList>>();
+  useEffect(() => {
+    const token = storage.getString('token');
+    console.log('main: ', token);
+    if (token === undefined) navigation.navigate('SignIn');
+  }, []);
+
   return (
     <Tab.Navigator
       initialRouteName="HomeNavegator"

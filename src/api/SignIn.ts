@@ -1,5 +1,7 @@
-async function SignInService(email: string, password: string) {
-  const response = await fetch('https://reqres.in/api/login', {
+import { API_SING } from '@env';
+
+async function SignInAPI(email: string, password: string) {
+  const response = await fetch(API_SING, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -17,4 +19,4 @@ async function SignInService(email: string, password: string) {
   return json;
 }
 
-export default SignInService;
+export default SignInAPI;
