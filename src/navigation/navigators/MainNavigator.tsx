@@ -4,6 +4,7 @@ import HomeNavegator from './HomeNavegation';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
 import Header from '@app/components/Header';
+import SearchNavegator from './SearchNavegation';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,8 +29,8 @@ export default function MainNavigator() {
         }}
       />
       <Tab.Screen
-        name="Search"
-        component={SearchScreen}
+        name="SearchNavegator"
+        component={SearchNavegator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Image
