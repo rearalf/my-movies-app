@@ -2,7 +2,14 @@ import React from 'react';
 import styles from './styles';
 import { ScreenProps } from '@app/@types/navigation';
 import useGetDetails from '@app/hooks/useGetDetails';
-import { View, Text, Image, ScrollView, SafeAreaView } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import MovieCard from '@app/components/MovieCard';
 import scale from '@app/utils/Scale';
 import VoteAverage from '@app/components/VoteAverage';
@@ -15,6 +22,14 @@ export default function Details(props: DetailsScreenProps) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
+        <TouchableOpacity
+          style={styles.goBackButton}
+          onPress={() => props.navigation.goBack()}>
+          <Image
+            style={styles.goBackIcon}
+            source={require('@app/assets/icons/go-back.png')}
+          />
+        </TouchableOpacity>
         <Image
           source={{
             uri: `https://image.tmdb.org/t/p/w500/${movie?.poster_path}`,

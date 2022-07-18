@@ -11,16 +11,18 @@ const styles = StyleSheet.create({
     height: scale(550),
     marginBottom: scale(16),
   },
-  number: {
+  goBackButton: {
     position: 'absolute',
-    right: scale(15),
-    top: scale(15),
-    color: '#373242',
-    fontSize: 14,
-    fontWeight: '600',
-    backgroundColor: '#F4EFF3',
+    left: scale(10),
+    top: scale(10),
+    backgroundColor: '#FFF',
+    zIndex: 2,
     padding: scale(10),
-    borderRadius: scale(4),
+    borderRadius: scale(6),
+  },
+  goBackIcon: {
+    height: scale(20),
+    width: scale(20),
   },
   title: {
     color: '#373242',

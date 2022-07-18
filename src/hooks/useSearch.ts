@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 
 function useSearch(searchMovie: string) {
   const { searchMovieTab, setSearchMovieTab } = useContext(SearchMovieContext);
-  const [search, setSearch] = useState('minions and monsters');
+  const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
   const [foundMovies, setFoundMovies] = useState<ListMoviesResult['results']>(
     [],
