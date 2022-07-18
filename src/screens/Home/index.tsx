@@ -1,32 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import styles from './styles';
-import MoviesList from '@app/components/MoviesList';
+import React from 'react';
+import { SafeAreaView } from 'react-native';
 import { ScreenProps } from '@app/@types/navigation';
-import {
-  View,
-  SafeAreaView,
-  TextInput,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import MoviesList from '@app/components/MoviesList';
+import FormSearch from '@app/components/FormSearch';
 import useGetPopularMovies from '@app/hooks/useGetPopularMovies';
 
-function Home() {
-  const { popularMovies, handleGetpPopularMovies } = useGetPopularMovies();
+function Home(props: ScreenProps<MainNavigationParamsList, 'Home'>) {
+  const { search, popularMovies, handleChangeInput, handleSearchMovie } =
+    useGetPopularMovies();
   return (
-    <SafeAreaView
-      style={{
-        backgroundColor: '#F4EFF3',
-      }}>
-      <View style={styles.formSearch}>
-        <TextInput placeholder="Email" style={styles.inputSearch} />
-        <TouchableOpacity style={styles.buttonSearch}>
-          <Image
-            style={styles.iconButton}
-            source={require('@app/assets/icons/search-button.png')}
-          />
-        </TouchableOpacity>
-      </View>
+    <SafeAreaView>
+      <FormSearch
+        search={search}
+        handleChangeInput={handleChangeInput}
+        handleSearchMovie={handleSearchMovie}
+      />
       <MoviesList movies={popularMovies} />
     </SafeAreaView>
   );

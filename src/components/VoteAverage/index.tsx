@@ -9,15 +9,15 @@ const VoteAverage = ({ voteAverage }: { voteAverage: number }) => {
       style={[
         styles.contentvoteAverage,
         voteAveragePorcent < 50 && styles.contentvoteAverage50,
-        voteAveragePorcent > 50 && styles.contentvoteAverage60,
-        voteAveragePorcent > 70 && styles.contentvoteAverage70,
+        voteAveragePorcent >= 50 && styles.contentvoteAverage60,
+        voteAveragePorcent >= 70 && styles.contentvoteAverage70,
       ]}>
       <Text
         style={[
           styles.voteAverage,
           voteAveragePorcent < 50 && styles.voteAverage50,
-          voteAveragePorcent > 50 && styles.voteAverage60,
-          voteAveragePorcent > 70 && styles.voteAverage70,
+          voteAveragePorcent >= 50 && styles.voteAverage60,
+          voteAveragePorcent >= 70 && styles.voteAverage70,
         ]}>
         {`${voteAveragePorcent} `}%
       </Text>

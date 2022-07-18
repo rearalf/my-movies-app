@@ -2,6 +2,7 @@ import React from 'react';
 import SearchScreen from '@app/screens/Search';
 import DetailsScreen from '@app/screens/Details';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ScreenProps } from '@app/@types/navigation';
 
 const Stack = createNativeStackNavigator();
 

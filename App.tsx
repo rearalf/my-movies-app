@@ -8,11 +8,16 @@
  * @format
  */
 
+import SearchMovieProvider from '@app/context/SearchMovieProvider';
 import Navigation from '@app/navigation';
 import React from 'react';
 
 const App = () => {
-  return <Navigation />;
+  return (
+    <SearchMovieProvider>
+      <Navigation />
+    </SearchMovieProvider>
+  );
 };
 
 export default App;

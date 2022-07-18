@@ -4,12 +4,13 @@ import FormSearch from '@app/components/FormSearch';
 import MoviesList from '@app/components/MoviesList';
 import { View, Text, SafeAreaView } from 'react-native';
 import styles from './styles';
+import { ScreenProps } from '@app/@types/navigation';
 
-export default function Search() {
+export default function Search(props: ScreenProps<SearchParamsList, 'Search'>) {
   const { search, foundMovies, handleChangeInput, handleSearchMovie } =
-    useSearch();
+    useSearch('props.route.params.searchMovie');
   return (
-    <SafeAreaView>
+    <View>
       <FormSearch
         search={search}
         handleChangeInput={handleChangeInput}
@@ -25,7 +26,9 @@ export default function Search() {
           )}
         </View>
       </View>
-      <MoviesList movies={foundMovies} />
-    </SafeAreaView>
+      <SafeAreaView>
+        <MoviesList movies={foundMovies} />
+      </SafeAreaView>
+    </View>
   );
 }
