@@ -4,18 +4,32 @@ import { ScreenProps } from '@app/@types/navigation';
 import MoviesList from '@app/components/MoviesList';
 import FormSearch from '@app/components/FormSearch';
 import useGetPopularMovies from '@app/hooks/useGetPopularMovies';
+import Loading from '@app/components/Loading';
 
 function Home(props: ScreenProps<MainNavigationParamsList, 'Home'>) {
-  const { search, popularMovies, handleChangeInput, handleSearchMovie } =
-    useGetPopularMovies();
+  const {
+    search,
+    loading,
+    popularMovies,
+    handleChangeInput,
+    handleSearchMovie,
+    handleGetpPopularMovies,
+  } = useGetPopularMovies();
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <FormSearch
         search={search}
         handleChangeInput={handleChangeInput}
         handleSearchMovie={handleSearchMovie}
       />
-      <MoviesList movies={popularMovies} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <MoviesList
+          movies={popularMovies}
+          handlGetMore={handleGetpPopularMovies}
+        />
+      )}
     </SafeAreaView>
   );
 }
